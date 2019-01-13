@@ -37,12 +37,10 @@ public class Main {
 	}
 
 	public static boolean check(int r) {
-
 		for (int i = 1; i < r; i++) {
 			if (colum[i] == colum[r]) {
 				return false;
 			}
-
 			if (Math.abs(i - r) == Math.abs(colum[i] - colum[r])) {
 				return false;
 			}
