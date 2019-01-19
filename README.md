@@ -206,4 +206,6 @@ https://www.acmicpc.net/problem/1922
 https://www.acmicpc.net/problem/1197  
 https://www.acmicpc.net/problem/11657  
 https://www.acmicpc.net/problem/1916  
-https://www.acmicpc.net/problem/11779
+https://www.acmicpc.net/problem/11779  
+https://www.acmicpc.net/problem/1504  
+https://www.acmicpc.net/problem/1753
