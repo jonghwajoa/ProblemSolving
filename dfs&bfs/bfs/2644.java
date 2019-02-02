@@ -5,8 +5,6 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	static int[] moveX = { 1, 0, -1, 0 };
-	static int[] moveY = { 0, 1, 0, 0 - 1 };
 
 	public static void main(String args[]) throws IOException {
 		Scanner sc = new Scanner(System.in);
