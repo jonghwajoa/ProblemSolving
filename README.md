@@ -209,3 +209,57 @@ https://www.acmicpc.net/problem/1916
 https://www.acmicpc.net/problem/11779  
 https://www.acmicpc.net/problem/1504  
 https://www.acmicpc.net/problem/1753
+
+## 190120
+
+https://www.acmicpc.net/problem/11403  
+https://www.acmicpc.net/problem/11404
+
+## 190121
+
+https://www.acmicpc.net/problem/1806
+
+## 190122
+
+https://www.acmicpc.net/problem/2003
+
+## 190123
+
+https://www.acmicpc.net/problem/1644
+
+## 190124
+
+https://www.acmicpc.net/problem/1261
+
+## 190128
+
+https://www.acmicpc.net/problem/11437
+
+## 190129
+
+https://www.acmicpc.net/problem/1761
+
+## 190131
+
+https://www.acmicpc.net/problem/2042
+
+## 190201
+
+https://www.acmicpc.net/problem/7596  
+https://www.acmicpc.net/problem/2468
+
+## 190202
+
+https://www.acmicpc.net/problem/10026
+
+## 190207
+
+https://www.acmicpc.net/problem/2589  
+https://www.acmicpc.net/problem/5014  
+https://www.acmicpc.net/problem/3055
+
+## 190208
+
+https://www.acmicpc.net/problem/2309  
+https://www.acmicpc.net/problem/14501  
+https://www.acmicpc.net/problem/14502
