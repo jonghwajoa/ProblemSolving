@@ -252,14 +252,75 @@ https://www.acmicpc.net/problem/2468
 
 https://www.acmicpc.net/problem/10026
 
+## 190203
+
+https://www.acmicpc.net/problem/1789  
+https://www.acmicpc.net/problem/2884
+
+## 190204
+
+https://www.acmicpc.net/problem/2960  
+https://www.acmicpc.net/problem/4948
+
+## 190205
+
+https://www.acmicpc.net/problem/5063  
+https://www.acmicpc.net/problem/5543
+
+## 190206
+
+https://www.acmicpc.net/problem/5565  
+https://www.acmicpc.net/problem/5585
+
 ## 190207
 
-https://www.acmicpc.net/problem/2589  
-https://www.acmicpc.net/problem/5014  
+https://www.acmicpc.net/problem/2589
+https://www.acmicpc.net/problem/5014
 https://www.acmicpc.net/problem/3055
 
 ## 190208
 
-https://www.acmicpc.net/problem/2309  
-https://www.acmicpc.net/problem/14501  
+https://www.acmicpc.net/problem/2309
+https://www.acmicpc.net/problem/14501
 https://www.acmicpc.net/problem/14502
+
+## 1902011
+
+https://www.acmicpc.net/problem/1966  
+https://www.acmicpc.net/problem/2231  
+https://www.acmicpc.net/problem/14888 (순열)  
+https://www.acmicpc.net/problem/14888 (백트레킹)
+
+## 190212
+
+https://www.acmicpc.net/problem/10798  
+https://www.acmicpc.net/problem/10886  
+sw 1767
+
+## 190213
+
+https://www.acmicpc.net/problem/14500  
+https://www.acmicpc.net/problem/7568  
+https://www.acmicpc.net/problem/14889
+
+## 190214
+
+https://www.acmicpc.net/problem/2455  
+https://www.acmicpc.net/problem/1094  
+http://codingdojang.com/scode/421
+
+## 190215
+
+https://www.acmicpc.net/problem/1057  
+https://www.acmicpc.net/problem/1547  
+https://www.acmicpc.net/problem/1018
+
+## 190216
+
+https://www.acmicpc.net/problem/2563  
+https://www.acmicpc.net/problem/5597  
+https://www.acmicpc.net/problem/2822  
+https://www.acmicpc.net/problem/2206  
+https://www.acmicpc.net/problem/10707  
+https://www.acmicpc.net/problem/5532  
+https://www.acmicpc.net/problem/1159
