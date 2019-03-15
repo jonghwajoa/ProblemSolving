@@ -1,49 +1,48 @@
-package boj;
-
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
 		int n = sc.nextInt();
 		int m = sc.nextInt();
-		ArrayList<Bridge>[] a = (ArrayList<Bridge>[]) new ArrayList[n + 1];
+
+		ArrayList<Network>[] list = new ArrayList[n + 1];
 
 		for (int i = 1; i <= n; i++) {
-			a[i] = new ArrayList<Bridge>();
+			list[i] = new ArrayList<>();
 		}
 
 		for (int i = 0; i < m; i++) {
-			int u = sc.nextInt();
-			int v = sc.nextInt();
-			int c = sc.nextInt();
-			a[u].add(new Bridge(u, v, c));
-			a[v].add(new Bridge(v, u, c));
+			int a = sc.nextInt();
+			int b = sc.nextInt();
+			int t = sc.nextInt();
+			list[a].add(new Network(a, b, t));
+			list[b].add(new Network(b, a, t));
 		}
-		boolean[] v = new boolean[n + 1];
-		Cmp cmp = new Cmp();
 
-		PriorityQueue<Bridge> q = new PriorityQueue<Bridge>(1, cmp);
-		v[1] = true;
-		for (Bridge b : a[1]) {
-			q.add(b);
+		boolean[] visit = new boolean[n + 1];
+		PriorityQueue<Network> q = new PriorityQueue<>(new Compare());
+		visit[1] = true;
+
+		for (Network cur : list[1]) {
+			q.add(cur);
 		}
+
 		int ans = 0;
 
 		while (!q.isEmpty()) {
-			Bridge cur = q.poll();
-			if (v[cur.ed] == false) {
-				q.add(cur);
-				ans += cur.cost;
-				v[cur.ed] = true;
+			Network cur = q.poll();
 
-				for (Bridge b : a[cur.ed]) {
-					q.add(b);
+			if (!visit[cur.end]) {
+				visit[cur.end] = true;
+				ans += cur.cost;
+				q.add(cur);
+
+				for (Network e : list[cur.end]) {
+					q.add(e);
 				}
 			}
 		}
@@ -52,21 +51,22 @@ public class Main {
 	}
 }
 
-class Cmp implements Comparator<Bridge> {
+class Compare implements Comparator<Network> {
 	@Override
-	public int compare(Bridge o1, Bridge o2) {
+	public int compare(Network o1, Network o2) {
 		return o1.cost - o2.cost;
 	}
 }
 
-class Bridge {
-	int st;
-	int ed;
+class Network {
+	int start;
+	int end;
 	int cost;
 
-	public Bridge(int st, int ed, int cost) {
-		this.st = st;
-		this.ed = ed;
+	public Network(int start, int end, int cost) {
+		this.start = start;
+		this.end = end;
 		this.cost = cost;
 	}
+
 }
