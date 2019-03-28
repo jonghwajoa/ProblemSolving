@@ -14,7 +14,6 @@ public class Main {
     static int nX, nY;
     static int[] dice = { 0, 0, 0, 0, 0, 0, 0 };
 
-    // 마지막 줄에는 이동하는 명령이 순서대로 주어진다. 동쪽은 1, 서쪽은 2, 북쪽은 3, 남쪽은 4로 주어진다.
     public static void main(String[] args) {
 
         final StringBuilder ans = new StringBuilder();
@@ -62,7 +61,6 @@ public class Main {
         System.out.println(ans.toString());
     }
 
-    // 0 front,back up down right left
     public static int[] move(int direction) {
 
         int[] newDice = new int[7];
@@ -112,4 +110,3 @@ public class Main {
         return false;
     }
 }
-// (R,C) r : 북쪽으로부터 떨어진 개수, c: 서쪽으로부터 떨어진 칸의 개수
