@@ -1,3 +1,6 @@
+
+// https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V1SYKAaUDFAWu&categoryId=AV5V1SYKAaUDFAWu&categoryType=CODE
+
 import java.util.Arrays;
 import java.util.Scanner;
 
