@@ -118,35 +118,53 @@ public class Solution {
 
     public static Enemy findEnemy(int x, int y, int[][] copy) {
         Queue<Point> q = new LinkedList<>();
-        PriorityQueue<Enemy> priority = new PriorityQueue<>(new AttackOrder());
 
         boolean visit[][] = new boolean[NY][NX];
         q.add(new Point(x, y));
         int max = Integer.MAX_VALUE;
+        Enemy enemy = null;
 
+        boolean flag = false;
         while (!q.isEmpty()) {
             Point cur = q.poll();
             for (int i = 0; i < 3; i++) {
                 int nextX = cur.x + mx[i];
                 int nextY = cur.y + my[i];
+                int diff = Math.abs(nextX - x) + Math.abs(nextY - y);
+
+                if (max < diff || ND < diff) {
+                    flag = true;
+                    break;
+                }
                 if (isSafe(nextX, nextY)) {
                     if (!visit[nextY][nextX]) {
                         visit[nextY][nextX] = true;
-                        int diff = Math.abs(nextX - x) + Math.abs(nextY - y);
-                        if (diff <= ND) {
-                            q.add(new Point(nextX, nextY));
-                            if (copy[nextY][nextX] == 1) {
-                                if (diff <= max) {
-                                    max = diff;
-                                    priority.add(new Enemy(nextX, nextY, diff));
+                        q.add(new Point(nextX, nextY));
+                        if (copy[nextY][nextX] == 1) {
+                            if (diff <= max) {
+                                max = diff;
+
+                                if (enemy == null) {
+                                    enemy = new Enemy(nextX, nextY, diff);
+                                } else {
+                                    if (diff < enemy.d) {
+                                        enemy = new Enemy(nextX, nextY, diff);
+                                    } else if (diff == enemy.d) {
+                                        if (nextX < enemy.x) {
+                                            enemy = new Enemy(nextX, nextY, diff);
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
+            if (flag) {
+                break;
+            }
         }
-        return priority.poll();
+        return enemy;
     }
 
     public static boolean isSafe(int x, int y) {
