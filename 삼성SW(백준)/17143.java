@@ -149,5 +149,4 @@ class Fish {
         this.d = d;
         this.z = z;
     }
-
 }
