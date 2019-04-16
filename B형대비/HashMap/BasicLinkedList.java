@@ -1,5 +1,4 @@
 class BasicLinkedList<T> {
-
     private Node head, tail;
     private int size;
 
@@ -13,7 +12,6 @@ class BasicLinkedList<T> {
             this.next = null;
             this.data = data;
         }
-
     }
 
     public BasicLinkedList() {
@@ -107,6 +105,36 @@ class BasicLinkedList<T> {
         return remove.data;
     }
 
+    public T remove(int index) {
+        Node target = move(index);
+        target.prev.next = target.next;
+        target.next.prev = target.prev;
+        return target.data;
+    }
+
+    public boolean remove(Object target) {
+        Node cur = head;
+
+        for (int i = 0; i < size; i++) {
+            if (cur.data.equals(target)) {
+                if (i == 0) {
+                    removeFirst();
+                    return true;
+                } else if (i == size - 1) {
+                    removeLast();
+                    return true;
+                } else {
+                    Node prev = cur.prev;
+                    Node next = cur.next;
+                    prev.next = next;
+                    next.prev = prev;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public String toString() {
         if (size == 0) {
             return "[]";
@@ -122,5 +150,35 @@ class BasicLinkedList<T> {
         }
         sb.append(cur.data + "]");
         return sb.toString();
+    }
+
+    class Iterator {
+        private Node next;
+        private Node curNode;
+        private int nextIndex;
+
+        public Iterator() {
+            next = head;
+            nextIndex = 0;
+        }
+
+        public T next() {
+            curNode = next;
+            next = next.next;
+            nextIndex++;
+            return curNode.data;
+        }
+
+        public boolean hasNext() {
+            if (nextIndex < size) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public Iterator iterator() {
+        return new Iterator();
     }
 }
