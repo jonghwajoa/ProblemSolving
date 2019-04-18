@@ -2,7 +2,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-
     final static int[] mx = { 0, 1, 0, -1 };
     final static int[] my = { -1, 0, 1, 0 };
     static int[][] possible, map;
@@ -104,7 +103,7 @@ public class Main {
 
         map[CLEANY - 1][1] = 0;
         map[CLEANY][1] = 0;
-
+        
         map[CLEANY - 1][0] = 0;
         map[CLEANY][0] = 0;
 
