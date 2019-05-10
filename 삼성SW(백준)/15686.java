@@ -1,3 +1,95 @@
+// 수정 19.05.10
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Solution {
+	final static int EMPTY = 0, HOUSE = 1, GOD = 2;
+	static LinkedList<Pair> list, house;
+	static int M;
+	static boolean[] visit;
+	static int ans;
+
+	public static void main(String args[]) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		M = sc.nextInt();
+		list = new LinkedList<>();
+		house = new LinkedList<>();
+		ans = Integer.MAX_VALUE;
+		for (int y = 0; y < N; y++) {
+			for (int x = 0; x < N; x++) {
+				int val = sc.nextInt();
+				if (val == HOUSE) {
+					house.add(new Pair(x, y));
+				} else if (val == GOD) {
+					list.add(new Pair(x, y));
+				}
+			}
+		}
+		visit = new boolean[list.size()];
+		dfs(0, 0);
+		System.out.println(ans);
+
+	}
+
+	public static void dfs(int index, int useAcc) {
+		if (useAcc == M) {
+			cul();
+			return;
+		}
+		if (index >= list.size()) {
+			return;
+		}
+
+		visit[index] = true;
+		dfs(index + 1, useAcc + 1);
+		visit[index] = false;
+		dfs(index + 1, useAcc);
+
+	}
+
+	public static void cul() {
+
+		int houseSize = house.size();
+		int godSize = list.size();
+		int sum = 0;
+		for (int h = 0; h < houseSize; h++) {
+			Pair housePoint = house.get(h);
+			int min = Integer.MAX_VALUE;
+			for (int g = 0; g < godSize; g++) {
+				if (!visit[g]) {
+					continue;
+				}
+				Pair godPoint = list.get(g);
+				int tmp = Math.abs(housePoint.x - godPoint.x) + Math.abs(housePoint.y - godPoint.y);
+				if (tmp < min) {
+					min = tmp;
+				}
+			}
+			sum += min;
+		}
+
+		if (sum < ans) {
+			ans = sum;
+		}
+	}
+}
+
+class Pair {
+	int x;
+	int y;
+
+	public Pair(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+	}
+
+}
+
+
+
+/*
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -107,3 +199,4 @@ class Point {
 		this.y = y;
 	}
 }
+*/
