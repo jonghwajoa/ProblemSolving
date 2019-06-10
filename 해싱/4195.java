@@ -1,29 +1,32 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Main {
-    static int[] parent, level;
+    static int[] parent, ans;
     static HashMap<String, Integer> hash;
     static StringBuilder sb;
 
-    public static void main(String[] argv) {
-        final Scanner sc = new Scanner(System.in);
+    public static void main(String[] argv) throws NumberFormatException, IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        sb = new StringBuilder();
+        int repeat = Integer.parseInt(br.readLine());
 
-        int repeat = sc.nextInt();
         while (repeat-- > 0) {
-            final int N = sc.nextInt();
-            parent = new int[N * 2];
-            level = new int[N * 2];
-            sb = new StringBuilder();
-            for (int i = 0; i < N; i++) {
+            final int N = Integer.parseInt(br.readLine());
+            final int LEN = N * 2;
+            parent = new int[LEN];
+            ans = new int[LEN];
+            for (int i = 0; i < LEN; i++) {
                 parent[i] = i;
+                ans[i] = 1;
             }
 
-            sc.nextLine();
             hash = new HashMap<String, Integer>();
             int index = 0;
             for (int i = 0; i < N; i++) {
-                String[] input = sc.nextLine().split(" ");
+                String[] input = br.readLine().split(" ");
                 if (!hash.containsKey(input[0])) {
                     hash.put(input[0], index++);
                 }
@@ -37,8 +40,8 @@ public class Main {
 
                 union(idx1, idx2);
             }
-            System.out.println(sb.toString());
         }
+        System.out.println(sb.toString());
     }
 
     public static void union(int a, int b) {
@@ -46,16 +49,16 @@ public class Main {
         int y = find(b);
 
         if (x > y) {
-            int tmp = x;
-            x = y;
-            y = tmp;
+            int tmp = y;
+            y = x;
+            x = tmp;
         }
 
         if (x != y) {
             parent[y] = x;
-            level[x] = level[y] + 2;
+            ans[x] += ans[y];
         }
-        sb.append(level[x] + "\n");
+        sb.append(ans[x] + "\n");
     }
 
     public static int find(int idx) {
