@@ -1,57 +1,49 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.lang.annotation.Target;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class Main {
 	final static int[] mx = { -1, 0, 1, -1, 1, -1, 0, 1 };
 	final static int[] my = { -1, -1, -1, 0, 0, 1, 1, 1 };
-	final static int POST = 1, HOUSE = 2, FIELD = 3;
-	final static ArrayList<Point> houseList = new ArrayList<>();
+	final static int FIELD = 0, POST = 1, HOUSE = 2;
 	final static String SPACE = " ";
 	static Point start;
-	static int N, stepMin;
+	static int ans = Integer.MAX_VALUE;
+	static int N, houseN = 0;
 	static boolean[][] isVisit;
-	static int targetX, targetY, startFirodo;
-	static int minest;
-	static int[][] value;
+	static int[][] value, map;
 
 	public static void main(String[] argv) throws Exception {
 		getReadLine();
+
 		final int startFirodo = value[start.y][start.x];
+		isVisit = new boolean[N][N];
 
-		int len = houseList.size();
-		int ans = Integer.MIN_VALUE;
-		minest = startFirodo;
-		for (int i = 0; i < len; i++) {
-			Point target = houseList.get(i);
-			isVisit = new boolean[N][N];
-			isVisit[start.y][start.x] = true;
-			targetX = target.x;
-			targetY = target.y;
-			stepMin = Integer.MAX_VALUE;
-			dfs(start.x, start.y, minest, startFirodo);
-
-			if (ans < stepMin) {
-				ans = stepMin;
-			}
-		}
+		dfs(start.x, start.y, 0, Integer.MAX_VALUE, Integer.MIN_VALUE);
 		System.out.println(ans);
 	}
 
-	private static void dfs(int curX, int curY, int min, int max) {
-		if (curX == targetX && curY == targetY) {
-			int diff = max - min;
-			if (diff < stepMin) {
-				stepMin = diff;
-			}
+	private static void dfs(int curX, int curY, int accCnt, int min, int max) {
+		int firodo = value[curY][curX];
+		if (ans < max - min) {
+			return;
+		}
 
-			if (min < minest) {
-				minest = min;
+		if (firodo < min) {
+			min = firodo;
+		}
+
+		if (max < firodo) {
+			max = firodo;
+		}
+
+		if (map[curY][curX] == HOUSE) {
+			accCnt += 1;
+		}
+
+		if (houseN <= accCnt) {
+			int diff = max - min;
+			if (diff < ans) {
+				ans = diff;
 			}
 			return;
 		}
@@ -60,17 +52,16 @@ public class Main {
 			int nextX = curX + mx[i];
 			int nextY = curY + my[i];
 
-			if (0 <= nextX && nextX < N && 0 <= nextY && nextY < N) {
-				if (!isVisit[nextY][nextX]) {
-					isVisit[nextY][nextX] = true;
-					int nextFirodo = value[nextY][nextX];
-					int nextMax = max < nextFirodo ? nextFirodo : max;
-					int nextMin = nextFirodo < min ? nextFirodo : min;
-					dfs(nextX, nextY, nextMin, nextMax);
-					isVisit[nextY][nextX] = false;
-				}
+			if (isSafePoint(nextX, nextY) && !isVisit[nextY][nextX]) {
+				isVisit[nextY][nextX] = true;
+				dfs(nextX, nextY, accCnt, min, max);
+				isVisit[nextY][nextX] = false;
 			}
 		}
+	}
+
+	private static boolean isSafePoint(int x, int y) {
+		return (0 <= x && x < N && 0 <= y && y < N) ? true : false;
 	}
 
 	private static void getReadLine() throws Exception {
@@ -78,14 +69,17 @@ public class Main {
 
 		N = Integer.parseInt(br.readLine());
 		value = new int[N][N];
+		map = new int[N][N];
 
 		for (int y = 0; y < N; y++) {
 			int x = 0;
 			for (char c : br.readLine().toCharArray()) {
 				if (c == 'P') {
 					start = new Point(x, y);
+					map[y][x] = POST;
 				} else if (c == 'K') {
-					houseList.add(new Point(x, y));
+					map[y][x] = HOUSE;
+					houseN += 1;
 				}
 				x += 1;
 			}
