@@ -33,7 +33,7 @@ class Main {
             int l = Integer.parseInt(st.nextToken()) - 1;
             int r = Integer.parseInt(st.nextToken()) - 1;
             ansSB.append(query(1, 0, N - 1, l, r) + "\n");
-        }
+        }           
         System.out.println(ansSB);
     }
 
