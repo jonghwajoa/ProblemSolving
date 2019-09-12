@@ -1,9 +1,17 @@
-# Welcome to problem-solving 👋
-![Version](https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/jonghwajoa/codingtest/blob/master/LICENSE)
+# :rainbow: Welcome to problem-solving :carousel_horse:
+<p align="center">
+ <img alt="Version" src="https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000" />
 
+   <a href="https://github.com/jonghwajoa/codingtest/blob/master/LICENSE">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
+  </a>
+</p>
 
 ### 🏠 [Homepage](https://github.com/jonghwajoa/codingtest#readme)
+
+### Prerequisties
+- JAVA 1.8 
+- Node 10.16.0
 
 ## Author
 
@@ -18,7 +26,7 @@ Contributions, issues and feature requests are welcome!
 Feel free to check [issues page](https://github.com/jonghwajoa/codingtest/issues).
 
 ## Description
-사고력 향상을 위해 알고리즘 공부하고 기록합니다.
+알고리즘 공부하고 기록합니다.
 
 ## Show your support
 
