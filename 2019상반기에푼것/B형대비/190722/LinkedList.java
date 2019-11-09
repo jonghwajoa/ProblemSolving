@@ -25,13 +25,12 @@ class LinkedList<T> {
 		newNode.data = data;
 
 		if (head == null) {
-			head = newNode;
 			tail = newNode;
 		} else {
 			head.prev = newNode;
 			newNode.next = head;
-			head = newNode;
 		}
+		head = newNode;
 		size += 1;
 	}
 
